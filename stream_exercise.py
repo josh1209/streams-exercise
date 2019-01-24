@@ -51,11 +51,20 @@ class StreamProcessor(object):
         
         :return: int
         """
-
+        
         count = 0  # How many two-digit numbers the `process` method has added
                    # together.
         total = 0  # The running total of sums.
-
+        while True:
+            digits = self._stream.read(2)
+            if not digits or len(digits) is not 2:
+                break
+            count += 1
+            total += int(digits)
+            if total >= 200:
+                break
+            if count == 10:
+                break
         # TODO: WRITE CODE HERE:
 
         # Just some example syntax, you can read two digits from the head of the
